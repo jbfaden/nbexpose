@@ -90,7 +90,6 @@ public class ExposeTableModel extends AbstractTableModel {
             }
             return b;
         } else if (columnIndex == 1) {
-            nodes[rowIndex].getClientProperty(this)
             return nodes[rowIndex];
         } else if (columnIndex == 2) {
             return getNodeType(nodes[rowIndex]);
