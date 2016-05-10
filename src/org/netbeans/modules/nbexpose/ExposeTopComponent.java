@@ -3,6 +3,8 @@ package org.netbeans.modules.nbexpose;
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.Date;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 import org.openide.ErrorManager;
 import org.openide.util.NbBundle;
@@ -51,6 +53,12 @@ final class ExposeTopComponent extends TopComponent {
         jTable1.getColumnModel().getColumn(0).setMaxWidth(20);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(20);
 
+        jTable1.getSelectionModel().addListSelectionListener( new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent e) {
+                int n= jTable1.getSelectedRows().length;
+                closeSelectedButton.setText("Close "+n+" Selected Items" );
+            }
+        } );
         mia= new TableMouseAdapter();
         jTable1.addMouseListener( mia );
         

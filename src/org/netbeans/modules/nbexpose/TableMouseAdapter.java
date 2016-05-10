@@ -62,7 +62,7 @@ public class TableMouseAdapter extends MouseAdapter {
     
     
     class ShowItemsAction extends AbstractAction {
-        ShowItemsAction() { super(java.util.ResourceBundle.getBundle("org/netbeans/modules/nbexpose/Bundle").getString("show")); }
+        ShowItemsAction() { super(java.util.ResourceBundle.getBundle("org/netbeans/modules/nbexpose/Bundle").getString("showItems")); }
         public void actionPerformed( ActionEvent e ) {
             showSelected();
         }
@@ -70,7 +70,7 @@ public class TableMouseAdapter extends MouseAdapter {
     
     class CloseItemsAction extends AbstractAction {
         CloseItemsAction() { 
-            super(java.util.ResourceBundle.getBundle("org/netbeans/modules/nbexpose/Bundle").getString("close")); 
+            super(java.util.ResourceBundle.getBundle("org/netbeans/modules/nbexpose/Bundle").getString("closeItems")); 
         }
         public void actionPerformed( ActionEvent e ) {
             closeSelected();
@@ -79,7 +79,7 @@ public class TableMouseAdapter extends MouseAdapter {
     
     class SelectItemsAction extends AbstractAction {
         SelectItemsAction() { 
-            super(java.util.ResourceBundle.getBundle("org/netbeans/modules/nbexpose/Bundle").getString("select")); 
+            super(java.util.ResourceBundle.getBundle("org/netbeans/modules/nbexpose/Bundle").getString("checkItems")); 
         }
         public void actionPerformed( ActionEvent e ) {
             selectSelected();
