@@ -66,8 +66,9 @@ final class ExposeTopComponent extends TopComponent {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        closeSelectedButton = new javax.swing.JButton();
+        closeCheckedItems = new javax.swing.JButton();
         openSelectedButton = new javax.swing.JButton();
+        closeSelectedButton = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,10 +84,10 @@ final class ExposeTopComponent extends TopComponent {
         jScrollPane1.setViewportView(jTable1);
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/netbeans/modules/nbexpose/Bundle"); // NOI18N
-        org.openide.awt.Mnemonics.setLocalizedText(closeSelectedButton, bundle.getString("Close_Selected")); // NOI18N
-        closeSelectedButton.addActionListener(new java.awt.event.ActionListener() {
+        org.openide.awt.Mnemonics.setLocalizedText(closeCheckedItems, bundle.getString("Close_Selected")); // NOI18N
+        closeCheckedItems.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                closeSelectedButtonActionPerformed(evt);
+                closeCheckedItemsActionPerformed(evt);
             }
         });
 
@@ -97,15 +98,23 @@ final class ExposeTopComponent extends TopComponent {
             }
         });
 
+        org.openide.awt.Mnemonics.setLocalizedText(closeSelectedButton, "Close Selected Items");
+        closeSelectedButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                closeSelectedButtonActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(269, 269, 269)
+            .add(layout.createSequentialGroup()
                 .add(openSelectedButton)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(closeCheckedItems)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(closeSelectedButton))
         );
         layout.setVerticalGroup(
@@ -114,21 +123,27 @@ final class ExposeTopComponent extends TopComponent {
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(closeSelectedButton)
-                    .add(openSelectedButton)))
+                    .add(closeCheckedItems)
+                    .add(openSelectedButton)
+                    .add(closeSelectedButton)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-private void closeSelectedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeSelectedButtonActionPerformed
+private void closeCheckedItemsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeCheckedItemsActionPerformed
     model.actionsProvider.closeSelected();
-}//GEN-LAST:event_closeSelectedButtonActionPerformed
+}//GEN-LAST:event_closeCheckedItemsActionPerformed
 
 private void openSelectedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openSelectedButtonActionPerformed
     model.actionsProvider.dontCloseSelected();
 }//GEN-LAST:event_openSelectedButtonActionPerformed
+
+    private void closeSelectedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeSelectedButtonActionPerformed
+        mia.closeSelected();
+    }//GEN-LAST:event_closeSelectedButtonActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton closeCheckedItems;
     private javax.swing.JButton closeSelectedButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
