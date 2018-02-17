@@ -35,6 +35,7 @@ public class ExposeTableModel extends AbstractTableModel {
                 update();
             } else if (e.getPropertyName().equals("activated") && myTc.isOpened()) {
                 TopComponent tc = TopComponent.getRegistry().getActivated();
+                if ( tc==null ) return;
                 tc.putClientProperty(PROP_READ_FRESHNESS, new Date(System.currentTimeMillis()));
                 fireTableDataChanged();
             }
