@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
-        <file>file:/media/mini/nbprojects/nb/nbExpose/src/org/netbeans/modules/nbexpose/Util.java</file>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="netbeans">
+            <file>file:/home/jbf/tmp/20260211/t/nbexpose/src/org/netbeans/modules/nbexpose/ExposeTopComponent.java</file>
+            <file>file:/home/jbf/tmp/20260211/t/nbexpose/src/org/netbeans/modules/nbexpose/Bundle.properties</file>
+        </group>
     </open-files>
 </project-private>
