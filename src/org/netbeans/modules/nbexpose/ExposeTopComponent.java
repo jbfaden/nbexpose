@@ -6,13 +6,12 @@ package org.netbeans.modules.nbexpose;
 
 import java.util.Comparator;
 import java.util.Date;
+import java.util.ResourceBundle;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.windows.TopComponent;
-import org.openide.util.NbBundle.Messages;
 
 /**
  * Top component which displays something.
@@ -33,11 +32,7 @@ import org.openide.util.NbBundle.Messages;
         displayName = "#CTL_ExposeAction",
         preferredID = "ExposeTopComponent"
 )
-@Messages({
-    "CTL_ExposeAction=Expose",
-    "CTL_ExposeTopComponent=Expose Window",
-    "HINT_ExposeTopComponent=This is a Expose window"
-})
+
 public final class ExposeTopComponent extends TopComponent {
 
     private static ExposeTopComponent instance;
@@ -58,19 +53,19 @@ public final class ExposeTopComponent extends TopComponent {
         initComponents();
         jTable1.setDefaultRenderer( TopComponent.class, new IconTableCellRenderer() );
         jTable1.setDefaultRenderer( Date.class, new DateCellRenderer() );
-
-        setName(Bundle.CTL_ExposeTopComponent());
-        setToolTipText(Bundle.HINT_ExposeTopComponent());
-model= new ExposeTableModel( this );
+        
+        ResourceBundle bundle= java.util.ResourceBundle.getBundle("org/netbeans/modules/nbexpose/Bundle");
+        setName( bundle.getString("CTL_ExposeTopComponent") );
+        setToolTipText( bundle.getString("HINT_ExposeTopComponent") );
+        
+        model= new ExposeTableModel( this );
         TableSorter sorter= new TableSorter( model );
         
-        sorter.setColumnComparator( TopComponent.class, new Comparator() {
-            public int compare(Object o1, Object o2) {
-                String s1= Util.getLabelFor((TopComponent)o1).toLowerCase();
-                String s2= Util.getLabelFor((TopComponent)o2).toLowerCase();
-                return s1.compareTo( s2 );
-            }
-        } );
+        sorter.setColumnComparator(TopComponent.class, (Comparator<TopComponent>) (TopComponent o1, TopComponent o2) -> {
+            String s1= Util.getLabelFor(o1).toLowerCase();
+            String s2= Util.getLabelFor(o2).toLowerCase();
+            return s1.compareTo( s2 );
+        });
                 
         jTable1.setModel( sorter );
         sorter.setTableHeader( jTable1.getTableHeader() );
@@ -78,12 +73,10 @@ model= new ExposeTableModel( this );
         jTable1.getColumnModel().getColumn(0).setMaxWidth(20);
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(20);
 
-        jTable1.getSelectionModel().addListSelectionListener( new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent e) {
-                int n= jTable1.getSelectedRows().length;
-                closeSelectedButton.setText("Close "+n+" Selected Items" );
-            }
-        } );
+        jTable1.getSelectionModel().addListSelectionListener((ListSelectionEvent e) -> {
+            int n= jTable1.getSelectedRows().length;
+            closeSelectedButton.setText("Close "+n+" Selected Items" );
+        });
         mia= new TableMouseAdapter();
         jTable1.addMouseListener( mia );
     }

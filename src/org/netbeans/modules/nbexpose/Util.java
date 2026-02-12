@@ -61,9 +61,9 @@ public class Util {
         if (nodes == null) {
             return null;
         }
-        DataObject obj = null;
-        for (int i=0; i < nodes.length; i++) {
-            obj = (DataObject) nodes[i].getCookie(DataObject.class);
+        DataObject obj;
+        for (Node node : nodes) {
+            obj = node.getCookie(DataObject.class);
             if (obj != null) {
                 FileObject file = obj.getPrimaryFile();
                 if (file != null) {
@@ -93,16 +93,14 @@ public class Util {
         if (nodes == null) {
             return null;
         }
-        DataObject obj = null;
-        for (int i=0; i < nodes.length; i++) {
-            obj = (DataObject) nodes[i].getCookie(DataObject.class);
+        DataObject obj;
+        for (Node node : nodes) {
+            obj = node.getCookie(DataObject.class);
             if (obj != null) {
                 FileObject file = obj.getPrimaryFile();
-                if (obj != null) {
-                    Project p = FileOwnerQuery.getOwner(file);
-                    if (p != null) {
-                        return p;
-                    }
+                Project p = FileOwnerQuery.getOwner(file);
+                if (p != null) {
+                    return p;
                 }
             }
         }

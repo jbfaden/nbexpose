@@ -89,7 +89,9 @@
                     </run-dependency>
                 </dependency>
             </module-dependencies>
-            <public-packages/>
+            <public-packages>
+                <package>org.netbeans.modules.nbexpose</package>
+            </public-packages>
         </data>
     </configuration>
 </project>
